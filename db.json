@@ -1,0 +1,47 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "description": "Classic novel set in the Jazz Age.",
+      "reviews": [
+        "Timeless!",
+        "Beautiful writing."
+      ]
+    },
+    {
+      "id": "2",
+      "title": "1984",
+      "author": "George Orwell",
+      "description": "A dystopian future of surveillance and control.",
+      "reviews": [
+        "Still relevant today."
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "description": "A classic romance and social commentary.",
+      "reviews": [
+        "Witty and sharp.",
+        "5 To 10"
+      ]
+    },
+    {
+      "id": "4",
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "description": "A young girl’s view on racism and justice.",
+      "reviews": []
+    },
+    {
+      "id": "5",
+      "title": "Frankenstein",
+      "author": "Mary Shelley",
+      "description": "A cautionary tale of science and consequence.",
+      "reviews": []
+    }
+  ]
+}

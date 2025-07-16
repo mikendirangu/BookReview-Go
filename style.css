@@ -1,0 +1,61 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f2f2f2;
+  color: #222;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+  background: #121212;
+  color: #eee;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+#search {
+  padding: 8px;
+  width: 300px;
+}
+
+#book-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.book-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  width: 200px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+
+body.dark .book-card {
+  background: #333;
+}
+
+#review-section {
+  margin-top: 30px;
+}
+
+.hidden {
+  display: none;
+}
+
+#review-form {
+  margin-top: 10px;
+}
+
+#review-input {
+  width: 80%;
+  padding: 8px;
+}

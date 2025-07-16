@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BookReview&Go</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>📚 Book Review & Go</h1>
+    <input type="text" id="search" placeholder="Search by title or author..." />
+    <button id="toggle-mode">🌙 Toggle Dark Mode</button>
+  </header>
+
+  <main>
+    <section id="book-list"></section>
+    <section id="review-section" class="hidden">
+      <h2 id="review-title"></h2>
+      <ul id="review-list"></ul>
+      <form id="review-form">
+        <input type="text" id="review-input" placeholder="Write a review..." required />
+        <button type="submit">Submit Review</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
