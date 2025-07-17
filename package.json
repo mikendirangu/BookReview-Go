@@ -1,6 +1,6 @@
 
 {
-  "name": "bookreview-and-go",
+  "name": "BookReview-Go",
   "version": "1.0.0",
   "main": "Server.js", 
   "scripts": {
