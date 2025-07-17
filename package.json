@@ -1,8 +1,8 @@
 {
-  "name": "json-api",
+  "name": "db json",
   "version": "1.0.0",
   "scripts": {
-    "start": "node script.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "json-server": "^0.17.3"
