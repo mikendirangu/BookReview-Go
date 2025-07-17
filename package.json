@@ -2,7 +2,7 @@
   "name": "json-api",
   "version": "1.0.0",
   "scripts": {
-    "start": "json-server --watch backend/db.json --port 3000"
+    "start": "json-server.js"
   },
   "dependencies": {
     "json-server": "^0.17.3"
