@@ -1,26 +1,30 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!-- Defines the HTML5 document type -->
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BookReview&Go</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" /> <!-- Sets character encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> <!-- Responsive design on all devices -->
+  <title>BookReview&Go</title> <!-- Page title shown on browser tab -->
+  <link rel="stylesheet" href="style.css" /> <!-- Link to external CSS file -->
 </head>
 <body>
   <header>
-    <h1>📚 BookReview&Go</h1> <!-- App title -->
-    <button id="toggle-mode">Toggle Dark Mode</button> <!-- Theme switch button -->
+    <h1>📚 BookReview&Go</h1> <!-- Main heading of the site -->
+    <input type="text" id="search" placeholder="Search by title or author..." /> <!-- Search input for filtering books -->
+    <button id="toggle-mode">🌙 Toggle Dark Mode</button> <!-- Toggle button for dark mode -->
   </header>
 
-  <input type="text" id="search" placeholder="Search by title or author" /> <!-- Search bar -->
+  <main>
+    <section id="book-list"></section> <!-- Section where book cards will be rendered -->
+    <section id="review-section" class="hidden"> <!-- Section to display book reviews -->
+      <h2 id="review-title"></h2> <!-- Title of selected book for reviews -->
+      <ul id="review-list"></ul> <!-- List of reviews will appear here -->
+      <form id="review-form"> <!-- Form to submit new reviews -->
+        <input type="text" id="review-input" placeholder="Write a review..." required /> <!-- Review input box -->
+        <button type="submit">Submit Review</button> <!-- Button to submit the review -->
+      </form>
+    </section>
+  </main>
 
-  <div id="book-list"></div> <!-- Container to display book cards -->
-
-  <form id="review-form"> <!-- Form for submitting reviews -->
-    <input type="text" id="review-input" placeholder="Write your review..." required />
-    <button type="submit">Submit Review</button>
-  </form>
-
-  <script src="script.js"></script> <!-- Linking JavaScript file -->
+  <script src="script.js"></script> <!-- JavaScript file linked at the end for proper loading -->
 </body>
 </html>
