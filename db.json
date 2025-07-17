@@ -16,7 +16,8 @@
       "author": "George Orwell",
       "description": "A dystopian future of surveillance and control.",
       "reviews": [
-        "Still relevant today."
+        "Still relevant today.",
+        "Very Good"
       ]
     },
     {
@@ -26,7 +27,7 @@
       "description": "A classic romance and social commentary.",
       "reviews": [
         "Witty and sharp.",
-       
+        "5 To 10"
       ]
     },
     {
@@ -34,7 +35,9 @@
       "title": "To Kill a Mockingbird",
       "author": "Harper Lee",
       "description": "A young girl’s view on racism and justice.",
-      "reviews": []
+      "reviews": [
+        "jk"
+      ]
     },
     {
       "id": "5",
