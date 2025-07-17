@@ -19,7 +19,7 @@ reviewForm.addEventListener("submit", submitReview); // Handle review form submi
 
 // Fetch books from API
 function fetchBooks() {
-  fetch("http://localhost:3000/books")
+  fetch("https://bookreview-go.onrender.com/books")
     .then(res => res.json())
     .then(data => {
       books = data;
@@ -81,7 +81,7 @@ function submitReview(e) {
   selectedBook.reviews.push(newReview); // Add review to book
 
   // Update on server (db.json)
-  fetch(`http://localhost:3000/books/${selectedBook.id}`, {
+  fetch(`https://bookreview-go.onrender.com/books/${selectedBook.id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json"
