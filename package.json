@@ -1,13 +1,10 @@
-
 {
-  "name": "BookReview-Go",
+  "name": "json-api",
   "version": "1.0.0",
-  "main": "Server.js", 
   "scripts": {
-    "start": "node Server.js"
+    "start": "node server.js"
   },
-    "dependencies": {
+  "dependencies": {
     "json-server": "^0.17.3"
   }
 }
-
