@@ -1,10 +1,13 @@
+
 {
-  "name": "json-api",
+  "name": "bookreview-and-go",
   "version": "1.0.0",
+  "main": "Server.js", 
   "scripts": {
     "start": "node Server.js"
   },
-  "dependencies": {
+    "dependencies": {
     "json-server": "^0.17.3"
   }
 }
+
