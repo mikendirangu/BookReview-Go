@@ -1,78 +1,96 @@
-document.addEventListener("DOMContentLoaded", () => {
-  fetchBooks(); // Load books when page loads
+// Grab DOM elements for interaction
+const bookListEl = document.getElementById("book-list");
+const searchEl = document.getElementById("search");
+const toggleModeBtn = document.getElementById("toggle-mode");
+const reviewSection = document.getElementById("review-section");
+const reviewTitle = document.getElementById("review-title");
+const reviewList = document.getElementById("review-list");
+const reviewForm = document.getElementById("review-form");
+const reviewInput = document.getElementById("review-input");
 
-  document.getElementById("toggle-mode").addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode"); // Toggle dark/light theme
-  });
+let books = []; // Will store book data
+let selectedBook = null; // Holds the currently selected book
 
-  document.getElementById("review-form").addEventListener("submit", handleReviewSubmit); // Handle review form
-  document.getElementById("search").addEventListener("input", handleSearch); // Handle search input
-});
+// Event Listeners
+document.addEventListener("DOMContentLoaded", fetchBooks); // Load books when page loads
+searchEl.addEventListener("input", handleSearch); // Search as user types
+toggleModeBtn.addEventListener("click", () => document.body.classList.toggle("dark")); // Toggle dark mode
+reviewForm.addEventListener("submit", submitReview); // Handle review form submission
 
+// Fetch books from API
 function fetchBooks() {
-  fetch("http://localhost:3000/books") // Get books from json-server
-    .then((res) => res.json())
-    .then((books) => {
-      renderBooks(books); // Render book cards
+  fetch("http://localhost:3000/books")
+    .then(res => res.json())
+    .then(data => {
+      books = data;
+      renderBooks(books); // Show books on page
     });
 }
 
-function renderBooks(books) {
-  const bookList = document.getElementById("book-list");
-  bookList.innerHTML = ""; // Clear existing books
-
-  books.forEach((book) => {
+// Display all book cards
+function renderBooks(bookArray) {
+  bookListEl.innerHTML = "";
+  bookArray.forEach(book => {
     const card = document.createElement("div");
-    card.className = "book-card"; // Add styling class
-
+    card.className = "book-card";
     card.innerHTML = `
       <h3>${book.title}</h3>
-      <p><em>${book.author}</em></p>
+      <p><strong>Author:</strong> ${book.author}</p>
       <p>${book.description}</p>
-      <ul>
-        ${book.reviews.map((r) => `<li>${r}</li>`).join("")} <!-- Render reviews -->
-      </ul>
     `;
-
-    bookList.appendChild(card); // Add card to DOM
+    card.addEventListener("click", () => showReviews(book)); // Show reviews on click
+    bookListEl.appendChild(card);
   });
 }
 
-function handleReviewSubmit(e) {
-  e.preventDefault(); // Prevent page reload
-
-  const input = document.getElementById("review-input");
-  const reviewText = input.value;
-
-  fetch("http://localhost:3000/books/1") // Assuming updating first book
-    .then((res) => res.json())
-    .then((book) => {
-      const updatedReviews = [...book.reviews, reviewText]; // Add new review
-      return fetch(`http://localhost:3000/books/1`, {
-        method: "PATCH", // Update book data
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ reviews: updatedReviews }) // Send updated reviews
-      });
-    })
-    .then(() => {
-      input.value = ""; // Clear input field
-      fetchBooks(); // Reload book list to show new review
-    });
+// Filter books based on search input
+function handleSearch() {
+  const query = searchEl.value.toLowerCase();
+  const filtered = books.filter(book =>
+    book.title.toLowerCase().includes(query) ||
+    book.author.toLowerCase().includes(query)
+  );
+  renderBooks(filtered); // Show filtered books
 }
 
-function handleSearch(e) {
-  const query = e.target.value.toLowerCase(); // Get search query
+// Show selected book’s reviews
+function showReviews(book) {
+  selectedBook = book;
+  reviewSection.classList.remove("hidden"); // Make review section visible
+  reviewTitle.textContent = `Reviews for "${book.title}"`; // Set section title
+  renderReviews(book.reviews || []); // Render reviews or empty
+}
 
-  fetch("http://localhost:3000/books") // Fetch all books again
-    .then((res) => res.json())
-    .then((books) => {
-      const filtered = books.filter((book) =>
-        book.title.toLowerCase().includes(query) ||
-        book.author.toLowerCase().includes(query)
-      ); // Filter by title or author
+// Display list of reviews
+function renderReviews(reviews) {
+  reviewList.innerHTML = "";
+  reviews.forEach(review => {
+    const li = document.createElement("li");
+    li.textContent = review;
+    reviewList.appendChild(li);
+  });
+}
 
-      renderBooks(filtered); // Show matching results
+// Handle review submission
+function submitReview(e) {
+  e.preventDefault(); // Prevent page reload
+  const newReview = reviewInput.value.trim();
+  if (!newReview) return;
+
+  selectedBook.reviews = selectedBook.reviews || [];
+  selectedBook.reviews.push(newReview); // Add review to book
+
+  // Update on server (db.json)
+  fetch(`http://localhost:3000/books/${selectedBook.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ reviews: selectedBook.reviews })
+  })
+    .then(res => res.json())
+    .then(updatedBook => {
+      reviewInput.value = ""; // Clear input
+      renderReviews(updatedBook.reviews); // Show updated reviews
     });
 }
