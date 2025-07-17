@@ -1,61 +1,40 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif; /* Set default font */
+  background-color: #f4f4f4; /* Light background */
+  margin: 0;
   padding: 20px;
-  background: #f2f2f2;
-  color: #222;
-  transition: background 0.3s, color 0.3s;
 }
 
-body.dark {
-  background: #121212;
-  color: #eee;
+body.dark-mode {
+  background-color: #121212; /* Dark mode background */
+  color: white; /* Text color in dark mode */
 }
 
 header {
-  display: flex;
-  flex-direction: column;
+  display: flex; /* Horizontal layout */
+  justify-content: space-between; /* Space between title and toggle */
   align-items: center;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-
-#search {
-  padding: 8px;
-  width: 300px;
+  margin-bottom: 20px;
 }
 
 #book-list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-wrap: wrap; /* Allow books to wrap */
+  gap: 16px; /* Space between book cards */
 }
 
 .book-card {
-  background: #fff;
-  padding: 15px;
-  border-radius: 8px;
+  background: white;
+  padding: 12px;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   width: 200px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  cursor: pointer;
 }
 
-body.dark .book-card {
-  background: #333;
-}
-
-#review-section {
-  margin-top: 30px;
-}
-
-.hidden {
-  display: none;
+.dark-mode .book-card {
+  background: #1e1e1e; /* Dark card background */
 }
 
 #review-form {
-  margin-top: 10px;
-}
-
-#review-input {
-  width: 80%;
-  padding: 8px;
+  margin-top: 20px;
 }
