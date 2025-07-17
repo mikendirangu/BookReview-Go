@@ -2,29 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BookReview&Go</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>📚 Book Review & Go</h1>
-    <input type="text" id="search" placeholder="Search by title or author..." />
-    <button id="toggle-mode">🌙 Toggle Dark Mode</button>
+    <h1>📚 BookReview&Go</h1> <!-- App title -->
+    <button id="toggle-mode">Toggle Dark Mode</button> <!-- Theme switch button -->
   </header>
 
-  <main>
-    <section id="book-list"></section>
-    <section id="review-section" class="hidden">
-      <h2 id="review-title"></h2>
-      <ul id="review-list"></ul>
-      <form id="review-form">
-        <input type="text" id="review-input" placeholder="Write a review..." required />
-        <button type="submit">Submit Review</button>
-      </form>
-    </section>
-  </main>
+  <input type="text" id="search" placeholder="Search by title or author" /> <!-- Search bar -->
 
-  <script src="script.js"></script>
+  <div id="book-list"></div> <!-- Container to display book cards -->
+
+  <form id="review-form"> <!-- Form for submitting reviews -->
+    <input type="text" id="review-input" placeholder="Write your review..." required />
+    <button type="submit">Submit Review</button>
+  </form>
+
+  <script src="script.js"></script> <!-- Linking JavaScript file -->
 </body>
 </html>
